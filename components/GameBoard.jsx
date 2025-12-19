@@ -68,12 +68,14 @@ export default function GameBoard({ imageUrl, rows, cols, aspectRatio = 1 }) {
     const boardStyle = useMemo(() => ({
         display: 'grid',
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        gridAutoRows: `${BOARD_HEIGHT / rows}px`,
-        width: `${BOARD_WIDTH}px`,
-        height: `${BOARD_HEIGHT}px`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`,
+        rowGap: '4px',
+        maxWidth: `${BOARD_WIDTH}px`,
+        width: '100%',
+        aspectRatio: `${1 / aspectRatio}`,
         alignItems: 'center',
         justifyContent: 'center'
-    }), [cols, rows, BOARD_HEIGHT])
+    }), [cols, rows, aspectRatio])
 
     return (
         <main>
